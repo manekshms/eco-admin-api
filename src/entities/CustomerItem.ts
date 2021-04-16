@@ -8,6 +8,9 @@ export class CustomerItem extends BaseEntity {
   @Column({ type: 'bigint' })
   productId!: string;
 
+  @Column({ type: 'bigint' })
+  customerId!: string;
+
   @Column({ type: 'timestamp' })
   createdAt!: string;
 
