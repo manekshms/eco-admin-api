@@ -7,6 +7,7 @@ import { createDbConnection } from './db/connection';
 import { ConfigService } from './libs/ConfigService';
 import { AppValidationError } from './middlewares/validators/AppValidationError';
 const app = express();
+app.use(express.json());
 
 const configService = new ConfigService();
 createDbConnection(configService).catch((err) => {
@@ -23,6 +24,7 @@ useExpressServer(app, {
 
 // exception handling
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.log(err);
   if (err instanceof AppValidationError) {
     return res.status(400).send({
       code: 400,
@@ -39,7 +41,7 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   } else {
     res.status(500).send({
       code: 500,
-      name: 'Unknown Erro',
+      name: 'Unknown Error',
       message: 'Something went wrong',
     });
   }
