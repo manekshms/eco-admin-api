@@ -24,7 +24,6 @@ useExpressServer(app, {
 
 // exception handling
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  console.log(err);
   if (err instanceof AppValidationError) {
     return res.status(400).send({
       code: 400,
