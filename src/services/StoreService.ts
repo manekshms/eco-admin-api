@@ -15,7 +15,7 @@ export class StoreService {
       createdAt: time,
       updatedAt: time,
     };
-    const store = await Store.create(data);
+    const store = await Store.create(data).save();
     return store;
   }
 
@@ -23,6 +23,7 @@ export class StoreService {
     id: string,
     updateStoreData: UpdateStoreReqData
   ): Promise<Store> {
+    const time = moment().format('YYYY-MM-DD HH:mm:ss');
     const store = await Store.findOne(id);
     if (!store) {
       throw new NotFoundError('Store not found');
@@ -45,6 +46,7 @@ export class StoreService {
     if (typeof updateStoreData.isActive === 'boolean') {
       store.isActive = updateStoreData.isActive;
     }
+    store.updatedAt = time;
     await store.save();
     return store;
   }
