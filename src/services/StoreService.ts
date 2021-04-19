@@ -15,7 +15,7 @@ export class StoreService {
       createdAt: time,
       updatedAt: time,
     };
-    const store = await Store.create(data);
+    const store = await Store.create(data).save();
     return store;
   }
 

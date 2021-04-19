@@ -6,7 +6,7 @@ export class Product extends BaseEntity {
   productId!: string;
 
   @Column({ type: 'bigint' })
-  categoryId!: number;
+  categoryId!: string;
 
   @Column({ type: 'varchar' })
   name!: string;
