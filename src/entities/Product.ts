@@ -18,6 +18,9 @@ export class Product extends BaseEntity {
   brand!: string;
 
   @Column({ type: 'varchar' })
+  imageName!: string;
+
+  @Column({ type: 'varchar' })
   ecoRating!: string;
 
   @Column({ type: 'varchar' })
