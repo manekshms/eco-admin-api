@@ -15,7 +15,11 @@ export class StoreService {
       createdAt: time,
       updatedAt: time,
     };
+<<<<<<< HEAD
     const store = await Store.create(data).save();
+=======
+    const store = await Store.create(data);
+>>>>>>> remotes/upstream/dev
     return store;
   }
 
