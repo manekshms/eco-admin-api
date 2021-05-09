@@ -1,5 +1,6 @@
 import {
   Body,
+  Get,
   JsonController,
   Param,
   Patch,
@@ -22,6 +23,12 @@ import {
 @JsonController('/category')
 export class CategoryController {
   public constructor(private categoryService: CategoryService) {}
+
+  @Get('/')
+  public async getAllCategories(): Promise<Category[]> {
+    const categories = await this.categoryService.getAllCategories();
+    return categories;
+  }
 
   @UseBefore(...createCategoryValidators)
   @Post('/')

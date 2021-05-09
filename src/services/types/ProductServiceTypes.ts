@@ -5,7 +5,7 @@ export interface CreateProductData {
   brand: string;
   imageName: string;
   ecoRating: string;
-  packagingScore: string;
+  packaging: string;
   carbonFootprint: number;
 }
 

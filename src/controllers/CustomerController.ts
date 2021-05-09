@@ -1,5 +1,6 @@
 import {
   Body,
+  Get,
   JsonController,
   Param,
   Patch,
@@ -20,13 +21,19 @@ import {
 } from './types/CustomerControllerTypes';
 
 @Service()
-@JsonController('/product')
-export class ProductController {
+@JsonController('/customer')
+export class CustomerController {
   public constructor(private customerService: CustomerService) {}
+
+  @Get('/')
+  public async getAllCustomers(): Promise<Customer[]> {
+    const customers = await this.customerService.getAllCustomers();
+    return customers;
+  }
 
   @UseBefore(...createCustomerValidators)
   @Post('/')
-  public async createProduct(
+  public async createCustomer(
     @Body() createCustomerReqData: CreateCustomerReqData
   ): Promise<Customer> {
     const product = await this.customerService.createCustomer(
@@ -37,7 +44,7 @@ export class ProductController {
 
   @UseBefore(...updateCustomerByIdValidators)
   @Patch('/:id')
-  public async updateProductByID(
+  public async updateCustomerID(
     @Param('id') id: string,
     @Body() updateProductReqData: UpdateCustomerReqData
   ): Promise<Customer> {

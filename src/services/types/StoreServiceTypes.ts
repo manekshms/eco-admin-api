@@ -14,3 +14,15 @@ export interface UpdateStoreData {
   website: string;
   isActive?: boolean;
 }
+
+export interface CreateStoreProductData {
+  storeId: string;
+  ProductId: string;
+  distanceFromOrigin: number;
+}
+
+export interface productInfo {
+  productId: string;
+  name: string;
+  description: string;
+}

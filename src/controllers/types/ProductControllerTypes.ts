@@ -3,9 +3,9 @@ export interface CreateProductReqData {
   name: string;
   description: string;
   brand: string;
-  imageName: string;
+  imageName?: string;
   ecoRating: string;
-  packagingScore: string;
+  packaging: string;
   carbonFootprint: number;
 }
 
@@ -16,7 +16,7 @@ export interface UpdateProductReqData {
   brand?: string;
   imageName?: string;
   ecoRating?: string;
-  packagingScore?: string;
+  packaging?: string;
   carbonFootprint?: number;
   isActive?: boolean;
 }

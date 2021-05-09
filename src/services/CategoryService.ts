@@ -43,4 +43,9 @@ export class CategoryService {
     await category.save();
     return category;
   }
+
+  public async getAllCategories(): Promise<Category[]> {
+    const categories = await Category.find();
+    return categories;
+  }
 }

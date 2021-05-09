@@ -7,6 +7,13 @@ import { CreateProductData } from './types/ProductServiceTypes';
 
 @Service()
 export class ProductService {
+  public async getAllProducts(): Promise<Product[]> {
+    const products = await Product.find({
+      relations: ['category'],
+    });
+    return products;
+  }
+
   public async createProduct(
     createProductData: CreateProductData
   ): Promise<Product> {
@@ -48,8 +55,8 @@ export class ProductService {
     if (updateProductData.ecoRating) {
       product.ecoRating = updateProductData.ecoRating;
     }
-    if (updateProductData.packagingScore) {
-      product.packagingScore = updateProductData.packagingScore;
+    if (updateProductData.packaging) {
+      product.packaging = updateProductData.packaging;
     }
     if (updateProductData.carbonFootprint) {
       product.carbonFootprint = updateProductData.carbonFootprint;

@@ -11,8 +11,8 @@ export class Store extends BaseEntity {
   @Column({ type: 'varchar' })
   address!: string;
 
-  @Column({ type: 'varchar' })
-  location!: string;
+  @Column({ type: 'geography' })
+  location!: { type: string; coordinates: number[] };
 
   @Column({ type: 'varchar' })
   phoneNumber!: string;

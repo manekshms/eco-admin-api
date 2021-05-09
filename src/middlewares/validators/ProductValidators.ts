@@ -7,11 +7,7 @@ export const createProductValidators = [
     .trim()
     .not()
     .isEmpty()
-    .withMessage('category ID is required')
-    .isLength({ min: 4 })
-    .withMessage('Category ID should have more than 4 characters')
-    .isLength({ max: 15 })
-    .withMessage('Category ID should have less than 15 characters'),
+    .withMessage('category ID is required'),
 
   body('name')
     .trim()
@@ -43,27 +39,13 @@ export const createProductValidators = [
     .isLength({ max: 150 })
     .withMessage('Brand should have less than 150 characters'),
 
-  body('imageName')
-    .trim()
-    .not()
-    .isEmpty()
-    .withMessage('Image name is required')
-    .isLength({ min: 4 })
-    .withMessage('Image name have more than 4 characters')
-    .isLength({ max: 150 })
-    .withMessage('Image name have less than 150 characters'),
-
   body('ecoRating')
     .trim()
     .not()
     .isEmpty()
-    .withMessage('ECO Rating is required')
-    .isLength({ min: 1 })
-    .withMessage('ECO Rating should have more than 1 characters')
-    .isLength({ max: 15 })
-    .withMessage('ECO Rating should have less than 15 characters'),
+    .withMessage('ECO Rating is required'),
 
-  body('packagingScore')
+  body('packaging')
     .trim()
     .not()
     .isEmpty()

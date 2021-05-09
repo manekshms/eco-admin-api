@@ -7,6 +7,11 @@ import { CreateCustomerData } from './types/CustomerServiceTypes';
 
 @Service()
 export class CustomerService {
+  public async getAllCustomers(): Promise<Customer[]> {
+    const customers = await Customer.find();
+    return customers;
+  }
+
   public async createCustomer(
     createCustomerData: CreateCustomerData
   ): Promise<Customer> {

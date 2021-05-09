@@ -30,7 +30,7 @@ export const createStoreValidators = [
     .withMessage('Location is required')
     .isLength({ min: 4 })
     .withMessage('Location should have more than 4 characters')
-    .isLength({ max: 15 })
+    .isLength({ max: 25 })
     .withMessage('Location should have less than 15 characters'),
 
   body('phoneNumber')

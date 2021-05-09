@@ -14,3 +14,9 @@ export interface UpdateStoreReqData {
   website?: string;
   isActive?: boolean;
 }
+
+export interface CreateStoreProductReqData {
+  storeId: string;
+  ProductId: string;
+  distanceFromOrigin: number;
+}
