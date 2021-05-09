@@ -2,5 +2,5 @@ node_modules
 dist
 .env.*
 !.env.sample
-uploads
 fireStoreCredentials.json
+.DS_Store
