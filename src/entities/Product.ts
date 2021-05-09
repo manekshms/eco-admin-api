@@ -1,4 +1,13 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+import { Category } from './Category';
 
 @Entity('products')
 export class Product extends BaseEntity {
@@ -7,6 +16,10 @@ export class Product extends BaseEntity {
 
   @Column({ type: 'bigint' })
   categoryId!: string;
+
+  @JoinColumn({ name: 'categoryId' })
+  @ManyToOne(() => Category)
+  category!: Category;
 
   @Column({ type: 'varchar' })
   name!: string;
@@ -18,10 +31,13 @@ export class Product extends BaseEntity {
   brand!: string;
 
   @Column({ type: 'varchar' })
+  imageName!: string;
+
+  @Column({ type: 'varchar' })
   ecoRating!: string;
 
   @Column({ type: 'varchar' })
-  packagingScore!: string;
+  packaging!: string;
 
   @Column({ type: 'varchar' })
   carbonFootprint!: number;

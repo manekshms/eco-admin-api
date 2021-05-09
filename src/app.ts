@@ -6,8 +6,10 @@ import { Container } from 'typedi';
 import { createDbConnection } from './db/connection';
 import { ConfigService } from './libs/ConfigService';
 import { AppValidationError } from './middlewares/validators/AppValidationError';
+
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const configService = new ConfigService();
 createDbConnection(configService).catch((err) => {
@@ -20,10 +22,12 @@ useExpressServer(app, {
   middlewares: [express.json()],
   controllers: [`${__dirname}/controllers/*.js`],
   defaultErrorHandler: false,
+  cors: true,
 });
 
 // exception handling
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.log(err);
   if (err instanceof AppValidationError) {
     return res.status(400).send({
       code: 400,

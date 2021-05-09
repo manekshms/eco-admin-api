@@ -5,5 +5,5 @@ const configService = new ConfigService();
 const port = configService.get('PORT') || 3000;
 app.listen(port, () => {
   const { log } = console;
-  log('Server running on port 3000');
+  log(`Server running on port ${configService.get('PORT')}`);
 });

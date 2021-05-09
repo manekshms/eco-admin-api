@@ -25,6 +25,7 @@ export class CategoryService {
     id: string,
     updateCategoryData: UpdateCategoryReqData
   ): Promise<Category> {
+    const time = moment().format('YYYY-MM-DD HH:mm:ss');
     const category = await Category.findOne(id);
     if (!category) {
       throw new NotFoundError('Category not found');
@@ -38,7 +39,13 @@ export class CategoryService {
     if (typeof updateCategoryData.isActive === 'boolean') {
       category.isActive = updateCategoryData.isActive;
     }
+    category.updatedAt = time;
     await category.save();
     return category;
+  }
+
+  public async getAllCategories(): Promise<Category[]> {
+    const categories = await Category.find();
+    return categories;
   }
 }
