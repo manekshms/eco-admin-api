@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf ./dist/*",
-    "start": "cross-env NODE_ENV=production yarn clean && yarn build && node dist/index.js",
+    "start": "cross-env NODE_ENV=production yarn clean && yarn build && nodemon dist/index.js",
     "start:dev": "cross-env NODE_ENV=development yarn build && node dist/index.js",
     "dev": "nodemon --watch src -e ts -x yarn run start:dev",
     "lint": "eslint . --ext .ts"
